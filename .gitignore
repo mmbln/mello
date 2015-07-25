@@ -7,8 +7,23 @@ db.sqlite3
 
 # bootstrap path
 #----------------
-#bootstrap/bootstrap-3.3.5/*
+#bootstrap/bootstrap-3.3.5/* # does not work
+bootstrap/bootstrap-3.3.5/*.json
+bootstrap/bootstrap-3.3.5/*.yml
+bootstrap/bootstrap-3.3.5/docs
+bootstrap/bootstrap-3.3.5/*.js
+bootstrap/bootstrap-3.3.5/LICENSE
+bootstrap/bootstrap-3.3.5/CNAME
+bootstrap/bootstrap-3.3.5/*.md
+bootstrap/bootstrap-3.3.5/fonts
+bootstrap/bootstrap-3.3.5/js
+bootstrap/bootstrap-3.3.5/node_modules
+bootstrap/bootstrap-3.3.5/dist
+bootstrap/bootstrap-3.3.5/grunt
 bootstrap/bootstrap-3.3.5/less/*
+bootstrap/bootstrap-3.3.5/test-infra
+bootstrap/bootstrap-3.3.5/.[eg]*
+
 !bootstrap/bootstrap-3.3.5/less/variables.less
 
 ### 
