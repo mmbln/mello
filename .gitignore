@@ -1,7 +1,14 @@
+
+# django path
+#-------------
 *.pyc
 *~
 db.sqlite3
-!bootstrap/*/less/*.less
-bootstrap
+
+# bootstrap path
+#----------------
+#bootstrap/bootstrap-3.3.5/less/*
+bootstrap/bootstrap-3.3.5/less/*
+!bootstrap/bootstrap-3.3.5/less/variables.less
 
 ### 
