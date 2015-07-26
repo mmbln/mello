@@ -16,13 +16,14 @@ class HomePageTest(LiveServerTestCase):
 
     def test_home_page(self):
         self.browser.get(self.live_server_url)
-        page_text = self.browser.find_element_by_tag_name('title').text
-        self.assertIn('Mello', page_text)
+        page_text = self.browser.find_element_by_tag_name('h1')
+        self.assertIn('Hello, world!', page_text.text)
 
     def test_project_list(self):
         self.browser.get('%s%s' % (self.live_server_url, '/project/'))
-        page_text = self.browser.find_element_by_tag_name('title').text
-        self.assertIn('Hallo', page_text)
+        page_text = self.browser.find_element_by_tag_name('h1')
+        self.assertIn('Hello, world!', page_text.text)
+
 
 
     

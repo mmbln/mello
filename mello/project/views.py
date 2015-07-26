@@ -12,5 +12,5 @@ def home(request):
     return HttpResponseRedirect(reverse('project_list'))
 
 def view_project_list(request):
-    return HttpResponse('Hallo')
+    return render(request, 'project_list.html')
 
