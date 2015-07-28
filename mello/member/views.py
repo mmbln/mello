@@ -8,4 +8,4 @@ from django.core.urlresolvers import reverse
 # Create your views here.
 
 def view_member_list(request):
-    return HttpResponse('member_view')
+    return render(request, 'member_list.html')
