@@ -18,6 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^$', 'project.views.view_project_list', name='project_list'),
+    url(r'^new/', 'project.views.add_project', name='add_project'),
 #    url(r'^(?P<id>\d+)/$', 'project.views.view_project', name='project_view'),
 #    url(r'^new/$', 'project.views.new_project', name='project_new'),
 ]

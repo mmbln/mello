@@ -1,0 +1,41 @@
+{% extends "project_base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Mello - Projekte{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2">
+    </div>
+    <div class="col-xs-12 col-lg-8 content gap-after">
+      <h1>Neues Projekt</h1>
+      <form class="form-horizontal">
+	<div class="form-group">
+	  <label for="id_project_name" class="col-xs-2 control-label">Projektname</label>
+	  <div class="col-xs-10">
+	    <input id="id_project_name" class="form-control" maxlength="100" type="text" />
+	  </div>
+	  <label for="id_description" class="col-xs-2 control-label">Beschreibung</label>
+	  <div class="col-xs-10">
+	    <textarea id="id_description" class="form-control" type="textarea" rows="4"></textarea>
+	  </div>
+	  <div class="col-xs-2">
+	  </div>
+	  <div class="col-xs-8">
+	    <input class="btn btn-primary" type="submit" value="Hinzufügen">
+	    <input class="btn btn-default" type="button" value="Abbrechen">
+	  </div>
+	</div>
+      </form>
+    </div>
+    <div class="col-lg-2">
+    </div>
+  </div>
+  <div class="row">
+  </div>
+</div>
+{%endblock %}
+
+
