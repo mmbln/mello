@@ -1,5 +1,8 @@
+# member/models.py
+# -*- coding: utf-8 -*-
+
 from django.db import models
-# login_name
-# email
-# admin
+
+
+
 

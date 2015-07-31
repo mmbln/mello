@@ -11,8 +11,12 @@ def view_member_list(request):
     return render(request, 'member_list.html')
 
 def add_member(request):
-    form = MemberForm()
-    print(form.as_p())
+    if request.method == 'POST':
+        form = MemberForm(request.POST)
+        print(form)
+    else:
+        form = MemberForm()
+    
     return render(request, 'member_new.html')
 
 def edit_member(request):

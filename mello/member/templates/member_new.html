@@ -52,27 +52,19 @@
 {% block scripts %}
 <script type="text/javascript">
 $( document ).ready(function() {
-        console.log( "document loaded" );
-	console.log( $('#id_admin').val() );
-
 	if ($('input#id_admin').val() === '1') {
 		$('#id_member_type').val('admin');
-		console.log( "preset to Administrator");
 	} else {
 		$('#id_member_type').val('noadmin');
-		console.log( "not preset to Administrator");
 	}
 
 	$('#id_member_type').change(function() {
 		if ($(this).val() === 'admin') {
 			$('#id_admin').val('1');
-			console.log( "admin=1" );
 		} else {
 			$('#id_admin').val('0');
-			console.log( "admin=0" );
 		}
 	});
-	
 });
 
 </script>
