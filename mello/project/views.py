@@ -18,6 +18,7 @@ def add_project(request):
     return render(request, 'project_new.html')
 
 def edit_project(request):
+    form = ProjectForm()
     return render(request, 'project_new.html')
      
 

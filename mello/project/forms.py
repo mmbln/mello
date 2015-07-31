@@ -1,4 +1,4 @@
-# proect/forms.py
+# project/forms.py
 # -*- coding: utf-8 -*-
 
 from django import forms

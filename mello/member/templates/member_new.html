@@ -1,0 +1,79 @@
+{% extends "member_base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Mello - Mitglieder{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2">
+    </div>
+    <div class="col-xs-12 col-lg-8 content gap-after">
+      <h1>Neues Mitglied</h1>
+      <form class="form-horizontal">
+	{% csrf_token %}
+	<input type="hidden" id="id_admin" name="admin" value="0" />
+	<div class="form-group">
+	  <label for="id_login_name" class="col-xs-2 control-label">Loginname</label>
+	  <div class="col-xs-10">
+	    <input id="id_login_name" name="login_name" class="form-control form-fixer" maxlength="100" type="text" />
+	  </div>
+	  <label for="id_email" class="col-xs-2 control-label">Email</label>
+	  <div class="col-xs-10">
+	    <input id="id_email" name="email" class="form-control form-fixer" max_length="100" type="text" />
+	  </div>
+
+	  <label for="id_member_type" class="col-xs-2 control-label">Berechtigung</label>
+	  <div class="col-xs-10">
+	    <select id="id_member_type" class="form-control form-fixer">
+	      <option value="admin">Administrator</option>
+	      <option value="noadmin">Normales Mitglied</option>
+	    </select>
+	  </div>
+	  <div class="col-xs-2">
+	  </div>
+	  <div class="col-xs-8">
+	    <input class="btn btn-primary form-fixer" type="submit" value="Hinzufügen">
+	    <input class="btn btn-default form-fixer" type="button" value="Abbrechen">
+	  </div>
+	</div>
+      </form>
+    </div>
+    <div class="col-lg-2">
+    </div>
+  </div>
+  <div class="row">
+  </div>
+</div>
+{%endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+$( document ).ready(function() {
+        console.log( "document loaded" );
+	console.log( $('#id_admin').val() );
+
+	if ($('input#id_admin').val() === '1') {
+		$('#id_member_type').val('admin');
+		console.log( "preset to Administrator");
+	} else {
+		$('#id_member_type').val('noadmin');
+		console.log( "not preset to Administrator");
+	}
+
+	$('#id_member_type').change(function() {
+		if ($(this).val() === 'admin') {
+			$('#id_admin').val('1');
+			console.log( "admin=1" );
+		} else {
+			$('#id_admin').val('0');
+			console.log( "admin=0" );
+		}
+	});
+	
+});
+
+</script>
+{%endblock %}

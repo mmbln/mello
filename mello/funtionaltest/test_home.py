@@ -14,7 +14,8 @@ class HomePageTest(LiveServerTestCase):
     def tearDown(self):
         self.browser.quit()
 
-        
+    # Project
+    
     def test_home_page(self):
         self.browser.get(self.live_server_url)
         page_text = self.browser.page_source
@@ -25,16 +26,22 @@ class HomePageTest(LiveServerTestCase):
         page_text = self.browser.page_source
         self.assertIn('Projekte', page_text)
 
-    def test_new_project(self):
+    def test_new_project_test_page(self):
         self.browser.get('%s%s' % (self.live_server_url, '/project/new/'))
         page_text = self.browser.page_source
         self.assertIn('Neues Projekt', page_text)
 
+    # Member
         
     def test_member_list(self):
         self.browser.get('%s%s' % (self.live_server_url, '/member/'))
         page_text = self.browser.page_source
         self.assertIn('Mitglieder', page_text)
+
+    def test_new_member_test_page(self):
+        self.browser.get('%s%s' % (self.live_server_url, '/member/new/'))
+        page_text = self.browser.page_source
+        self.assertIn('Neues Mitglied', page_text)
 
 
 
