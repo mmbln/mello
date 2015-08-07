@@ -43,6 +43,8 @@ class HomePageTest(LiveServerTestCase):
         page_text = self.browser.page_source
         self.assertIn('Neues Mitglied', page_text)
 
+    def test_add_member(self):
+        self.assertIn('a', 'a')     
 
 
 
