@@ -8,19 +8,24 @@ from django.contrib.auth.models import (
     )
 
 class MemberManager(BaseUserManager):
-    def create_user(self, login_name, email, password=None):
+    def create_user(self, login_name, email, full_name, password=None):
         email_ = self.normalize_email(email)
-        user = self.model(login_name=login_name, email=email_)
+        user = self.model(login_name=login_name,
+                          email=email_,
+                          full_name = full_name)
         if password:
             user.set_password(password)
         user.save()
         return (user)
 
-    def create_superuser(self, login_name, email, password=None):
+    def create_superuser(self, login_name, email, full_name, password=None):
         """
         creates a superuser
         """
-        user = self.create_user(login_name, email, password=password)
+        user = self.create_user(login_name,
+                                email,
+                                full_name = full_name,
+                                password=password)
         user.is_admin = True
         user.save()
         return(user)
@@ -40,13 +45,13 @@ class Member(AbstractBaseUser):
                                   unique = True)
     is_admin = models.BooleanField(default=False)
     email = models.EmailField(unique=True)
-    first_name = models.CharField(max_length = 32)
-    last_name = models.CharField(max_length = 32)
+    full_name = models.CharField(max_length = 64)
     status = models.CharField(max_length = 2,
                               choices=STATUS_CHOICES,
                               default='en')  # entered
     is_staff = models.BooleanField(default=False)
-
+    image = models.ImageField()
+    
     objects = MemberManager()
 
     USERNAME_FIELD = 'login_name'

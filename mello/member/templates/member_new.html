@@ -17,11 +17,23 @@
 	<div class="form-group">
 	  <label for="id_login_name" class="col-xs-2 control-label">Loginname</label>
 	  <div class="col-xs-10">
-	    <input id="id_login_name" name="login_name" class="form-control form-fixer" maxlength="100" type="text" />
+	    <input id="id_login_name" name="login_name" class="form-control form-fixer" maxlength="32" type="text" />
 	  </div>
 	  <label for="id_email" class="col-xs-2 control-label">Email</label>
 	  <div class="col-xs-10">
 	    <input id="id_email" name="email" class="form-control form-fixer" max_length="100" type="text" />
+	  </div>
+	  <label for="id_image" class="col-xs-2 control-label">Bild</label>
+	  <div class="col-xs-10">
+	    <img id="id_image" name="image" src="{% static "img/member.png" %}" class="form-fixer" />
+	    <span>
+	    <p><button class="btn btn-default">Anderes Bild</button></p>
+	    <p><button class="btn btn-default">Standard Bild</button></p>
+	    </span>
+	  </div>
+	  <label for="id_full_name" class="col-xs-2 control-label">Name</label>
+	  <div class="col-xs-10">
+	    <input id="id_full_name" name="full_name" class="form-control form-fixer" max_length="64" type="text" />
 	  </div>
 
 	  <label for="id_member_type" class="col-xs-2 control-label">Berechtigung</label>

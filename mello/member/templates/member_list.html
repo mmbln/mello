@@ -25,17 +25,18 @@
     <div class="col-lg-2">
     </div>
   </div>
+  {% for member in members %}
   <div class="row">
     <div class="col-lg-2">
-      
     </div>
     <div class="col-xs-12 col-lg-8 content">
-      Hello, World! 2
+      <img class="small-portrait" src="{% static "img/alma.png" %}" />
+      <strong>{{ member.login_name }}</strong> {{ member.full_name }}
     </div>
     <div class="col-lg-2">
-      
     </div>
   </div>
+  {% endfor %}
 </div>
 {%endblock %}
 
