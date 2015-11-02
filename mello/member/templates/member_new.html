@@ -26,10 +26,11 @@
 	  <label for="id_image" class="col-xs-2 control-label">Bild</label>
 	  <div class="col-xs-10">
 	    <img id="id_image" name="image" src="{% static "img/member.png" %}" class="form-fixer" />
-	    <span>
-	    <p><button class="btn btn-default">Anderes Bild</button></p>
-	    <p><button class="btn btn-default">Standard Bild</button></p>
-	    </span>
+	    <div class="right-of-img">
+	      <p><button class="btn btn-default" onclick="changePicture(); return false;">Anderes Bild</button></p>
+	      <p><button class="btn btn-default" onclick="setStandardPicture(); return false;">Standard Bild</button></p>
+	      <p><input type="file" id="fileinput" /></p>
+	    </div>
 	  </div>
 	  <label for="id_full_name" class="col-xs-2 control-label">Name</label>
 	  <div class="col-xs-10">
@@ -62,22 +63,26 @@
 
 
 {% block scripts %}
-<script type="text/javascript">
+<!--  script src="{% static "js/new_picture.js" %}" / -->
+
+<script> 
 $( document ).ready(function() {
-	if ($('input#id_admin').val() === '1') {
-		$('#id_member_type').val('admin');
-	} else {
-		$('#id_member_type').val('noadmin');
-	}
+  if ($('#id_admin').val() === '1') {
+	  $('#id_member_type').val('admin');
+  } else {
+	  $('#id_member_type').val('noadmin');
+  }
+	
+  $('#id_member_type').change(function() {
+    if ($(this).val() === 'admin') {
+      $('#id_admin').val('1');
+    } else {
+      $('#id_admin').val('0');
+    }
+  });
 
-	$('#id_member_type').change(function() {
-		if ($(this).val() === 'admin') {
-			$('#id_admin').val('1');
-		} else {
-			$('#id_admin').val('0');
-		}
-	});
+  // picture handling
+  // TODO	
 });
-
 </script>
-{%endblock %}
+{% endblock %}

@@ -30,7 +30,11 @@
     <div class="col-lg-2">
     </div>
     <div class="col-xs-12 col-lg-8 content">
+      {% if member.image %}
+      <img class="small-portrait" src="{% url 'member_img_small' member.id %}" %}" />
+      {% else %}
       <img class="small-portrait" src="{% static "img/alma.png" %}" />
+      {% endif %}
       <strong>{{ member.login_name }}</strong> {{ member.full_name }}
     </div>
     <div class="col-lg-2">

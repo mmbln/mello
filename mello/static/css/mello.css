@@ -17,3 +17,13 @@
 .small-portrait {
     padding: 5px 0;
 }
+
+.right-of-img {
+    position: absolute;
+    top: 0px;
+    left: 180px;
+}
+
+#fileinput {
+    opacity: 0;
+}

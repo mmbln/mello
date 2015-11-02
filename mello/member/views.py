@@ -47,7 +47,7 @@ def add_member(request):
             return HttpResponseRedirect(reverse('member_list'))
         else:
             # Show form with errors
-            print('Form is not valid')
+            pass
     else:
         form = MemberForm()
     
@@ -55,4 +55,9 @@ def add_member(request):
 
 def edit_member(request):
     form = MemberForm()
+    return render(request, 'member_new.html')
+
+def show_img(request):
+    # TODO check if allowed to access the pictures
+    # TODO return png stream
     return render(request, 'member_new.html')
