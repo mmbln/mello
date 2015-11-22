@@ -1,6 +1,8 @@
 # member/views
 # -*- coding: utf-8 -*-
 
+import sys
+
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -57,7 +59,14 @@ def edit_member(request):
     form = MemberForm()
     return render(request, 'member_new.html')
 
-def show_img(request):
+def show_img(request,id):
     # TODO check if allowed to access the pictures
     # TODO return png stream
-    return render(request, 'member_new.html')
+    if int(id) == 0:
+        f = open("/home/mm/test.png","rb")
+        response = HttpResponse(f.read(), content_type="image/png")
+    else:
+        # TODO
+        f = open("/home/mm/test.png","rb")
+        response = HttpResponse(f.read(), content_type="image/png")
+    return response

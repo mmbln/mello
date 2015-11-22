@@ -27,7 +27,7 @@
 	  <div class="col-xs-10">
 	    <img id="id_image" name="image" src="{% static "img/member.png" %}" class="form-fixer" />
 	    <div class="right-of-img">
-	      <p><button class="btn btn-default" onclick="changePicture(); return false;">Anderes Bild</button></p>
+	      <p><button class="btn btn-default" onclick="changePicture();return false;">Anderes Bild</button></p>
 	      <p><button class="btn btn-default" onclick="setStandardPicture(); return false;">Standard Bild</button></p>
 	      <p><input type="file" id="fileinput" /></p>
 	    </div>
@@ -63,7 +63,7 @@
 
 
 {% block scripts %}
-<!--  script src="{% static "js/new_picture.js" %}" / -->
+<script src="{% static "js/new_picture.js" %}" />
 
 <script> 
 $( document ).ready(function() {
