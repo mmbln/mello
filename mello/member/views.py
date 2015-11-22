@@ -1,11 +1,16 @@
 # member/views
 # -*- coding: utf-8 -*-
 
-import sys
+
+
+import sys, os, re
+from PIL import Image
+
 
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.conf import settings
 
 from .forms import MemberForm
 from .models import Member
@@ -17,6 +22,11 @@ from .models import Member
 def generate_password():
     # TODO use random generator
     return ('123')
+
+# base clase for exception
+
+class Error(Exception):
+    pass
 
 #----------------------------------------------------------------
 # views
@@ -61,12 +71,31 @@ def edit_member(request):
 
 def show_img(request,id):
     # TODO check if allowed to access the pictures
-    # TODO return png stream
-    if int(id) == 0:
-        f = open("/home/mm/test.png","rb")
-        response = HttpResponse(f.read(), content_type="image/png")
-    else:
-        # TODO
-        f = open("/home/mm/test.png","rb")
-        response = HttpResponse(f.read(), content_type="image/png")
+    images_dir = os.path.join(os.path.dirname(__file__), 'images')
+    default_picture = os.path.join(os.path.dirname(__file__), '0_.png')
+    try:
+        if int(id) == 0:
+            f = open(default_picture,"rb")
+            response = HttpResponse(f.read(), content_type="image/png")
+        else:
+            pattern = re.compile("^%s_.*" % id)
+            # if file not found fallback to default
+            file_path = default_picture
+
+            # search the image directory
+            file_list = os.listdir(images_dir)
+            for f in file_list:
+                if pattern.match(f):
+                    file_path = os.path.join(images_dir, f)
+                    break
+            #
+            picture = Image.open(file_path).resize((150,150))
+            response = HttpResponse(content_type="image/png")
+            picture.save(response, "PNG")
+            
+    except:
+        picture = Image.new("RGB", (150,150), "red")
+        response = HttpResponse(content_type="image/png")
+        picture.save(response, "PNG")
+        
     return response

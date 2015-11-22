@@ -7,6 +7,8 @@ db.sqlite3
 migrations
 \#*
 
+mello/member/images
+
 # bootstrap path
 #----------------
 #bootstrap/bootstrap-3.3.5/* # does not work
