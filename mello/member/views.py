@@ -23,11 +23,6 @@ def generate_password():
     # TODO use random generator
     return ('123')
 
-# base clase for exception
-
-class Error(Exception):
-    pass
-
 #----------------------------------------------------------------
 # views
 #----------------------------------------------------------------
