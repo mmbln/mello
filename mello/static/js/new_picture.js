@@ -8,7 +8,7 @@ function changePicture()
 {
     /* file dialog */
     /* user id */
-    alert('Hello changePicture');
+    $("#fileinput").click()
 }
 
 function setStandardPicture()
