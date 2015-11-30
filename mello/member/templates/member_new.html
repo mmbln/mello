@@ -29,7 +29,7 @@
 	    <div class="right-of-img">
 	      <p><button class="btn btn-default" onclick="changePicture();return false;">Anderes Bild</button></p>
 	      <p><button class="btn btn-default" onclick="setStandardPicture(); return false;">Standard Bild</button></p>
-	      <p><input type="file" id="fileinput" /></p>
+	      <p><input type="file" id="fileinput" name="file" /></p>
 	    </div>
 	  </div>
 	  <label for="id_full_name" class="col-xs-2 control-label">Name</label>
@@ -63,16 +63,16 @@
 
 
 {% block scripts %}
-<script src="{% static "js/new_picture.js" %}" />
+<script src="{% static "js/new_picture.js" %}" ></script>
 
 <script> 
 $( document ).ready(function() {
   if ($('#id_admin').val() === '1') {
-	  $('#id_member_type').val('admin');
+    $('#id_member_type').val('admin');
   } else {
-	  $('#id_member_type').val('noadmin');
-  }
-	
+    $('#id_member_type').val('noadmin');
+  };
+
   $('#id_member_type').change(function() {
     if ($(this).val() === 'admin') {
       $('#id_admin').val('1');
@@ -81,8 +81,11 @@ $( document ).ready(function() {
     }
   });
 
-  // picture handling
-  // TODO	
+  $('#fileinput').change(function(e) {
+    loadFile(e)
+  });
+
 });
+
 </script>
 {% endblock %}
