@@ -11,7 +11,7 @@
     </div>
     <div class="col-xs-12 col-lg-8 content gap-after">
       <h1>Neues Mitglied</h1>
-      <form class="form-horizontal" method="post">
+      <form class="form-horizontal" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
 	<input type="hidden" id="id_admin" name="admin" value="0" />
 	<div class="form-group">

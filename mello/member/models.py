@@ -50,7 +50,7 @@ class Member(AbstractBaseUser):
                               choices=STATUS_CHOICES,
                               default='en')  # entered
     is_staff = models.BooleanField(default=False)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='member')
     
     objects = MemberManager()
 
