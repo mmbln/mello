@@ -10,7 +10,7 @@ function changePicture()
     /* user id */
     console.log("changePicture");
     
-    $("#fileinput").click()
+    $("#id_member_img").click()
 }
 
 function setStandardPicture()

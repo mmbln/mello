@@ -29,7 +29,7 @@
 	    <div class="right-of-img">
 	      <p><button class="btn btn-default" onclick="changePicture();return false;">Anderes Bild</button></p>
 	      <p><button class="btn btn-default" onclick="setStandardPicture(); return false;">Standard Bild</button></p>
-	      <p><input type="file" id="fileinput" name="file" /></p>
+	      <p><input type="file" id="id_member_img" name="member_img" /></p>
 	    </div>
 	  </div>
 	  <label for="id_full_name" class="col-xs-2 control-label">Name</label>
@@ -81,7 +81,7 @@ $( document ).ready(function() {
     }
   });
 
-  $('#fileinput').change(function(e) {
+  $('#id_member_img').change(function(e) {
     loadFile(e)
   });
 
