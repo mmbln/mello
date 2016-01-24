@@ -8,23 +8,36 @@ from django.contrib.auth.models import (
     )
 
 class MemberManager(BaseUserManager):
-    def create_user(self, login_name, email, full_name, password=None):
+    def create_user(self,
+                    login_name,
+                    email,
+                    full_name='',
+                    member_img='',
+                    password=None):
         email_ = self.normalize_email(email)
         user = self.model(login_name=login_name,
                           email=email_,
-                          full_name = full_name)
+                          full_name = full_name,
+                          image=member_img)
         if password:
             user.set_password(password)
         user.save()
         return (user)
+    
 
-    def create_superuser(self, login_name, email, full_name, password=None):
+    def create_superuser(self,
+                         login_name,
+                         email,
+                         full_name='',
+                         member_img='',
+                         password=None):
         """
         creates a superuser
         """
         user = self.create_user(login_name,
                                 email,
                                 full_name = full_name,
+                                member_img=member_img,
                                 password=password)
         user.is_admin = True
         user.save()

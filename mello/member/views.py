@@ -33,8 +33,14 @@ def store_new_image(user_id, image_file):
         if pattern.match(f):
             os.remove(os.path.join(images_dir, f))
     # make a new filename
-    new_file_name = "%d_%s" % (user_id, os.path.basename(image_file))
-    shutil.move(image_file, os.path.join(image_dir, new_file_name))
+    new_file_name = "%d_x" % (user_id)
+    new_file_path = os.path.join(images_dir, new_file_name)
+    print(new_file_path)
+    # todo scale and transform to png
+    with open(new_file_path, 'wb+') as dest:
+        for chunk in image_file.chunks():
+            dest.write(chunk)
+
     
 #----------------------------------------------------------------
 # views
@@ -53,21 +59,27 @@ def add_member(request):
             login_name = form.cleaned_data['login_name']
             email = form.cleaned_data['email']
             full_name = form.cleaned_data['full_name']
-            member_img = form.cleaned_data['member_img']
+            no_image = form.cleaned_data['no_image']
+            if no_image:
+                member_img = ''
+            else:
+                member_img = form.cleaned_data['member_img']
             
             if form.cleaned_data['admin']:
                 user = Member.objects.create_superuser(email=email,
                                                 login_name=login_name,
                                                 password=temp_password,
-                                                full_name=full_name)
+                                                full_name=full_name,
+                                                member_img=member_img)
             else:
                 user = Member.objects.create_user(email=email,
                                            login_name=login_name,
                                            password=temp_password,
-                                           full_name=full_name)
+                                           full_name=full_name,
+                                           member_img=member_img)
             # store the image
-            path_of_new_image = os.path.join(settings.MEDIA_ROOT, member_img)
-            store_new_image(user.id, path_of_new_image)
+            if member_img:
+                store_new_image(user.id, member_img)
             
             # TODO send email to user
             return HttpResponseRedirect(reverse('member_list'))

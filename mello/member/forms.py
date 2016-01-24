@@ -10,7 +10,8 @@ class MemberForm(forms.Form):
     email = forms.EmailField(max_length=64)
     full_name = forms.CharField(max_length=64)
     admin = forms.BooleanField()
-    member_img = forms.ImageField()
+    member_img = forms.ImageField(required=False)
+    no_image = forms.BooleanField(required=False)
     
     def clean_login_name(self):
         ln = self.cleaned_data.get('login_name')

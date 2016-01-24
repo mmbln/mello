@@ -15,7 +15,9 @@
 }
 
 .small-portrait {
-    padding: 5px 0;
+    padding: 5px 5px;
+    height: 35px;
+    width: 35px;
 }
 
 .right-of-img {

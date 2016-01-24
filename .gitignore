@@ -8,6 +8,7 @@ migrations
 \#*
 
 mello/member/images
+mello/mello/upload
 
 # bootstrap path
 #----------------

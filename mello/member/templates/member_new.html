@@ -14,6 +14,7 @@
       <form class="form-horizontal" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
 	<input type="hidden" id="id_admin" name="admin" value="0" />
+	<input type="hidden" id="id_no_image" name="no_image" value="1" />
 	<div class="form-group">
 	  <label for="id_login_name" class="col-xs-2 control-label">Loginname</label>
 	  <div class="col-xs-10">

@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from project import views
+
 urlpatterns = [
-    url(r'^$', 'project.views.home', name='mello_home'),
+    url(r'^$', views.home, name='mello_home'),
     url(r'^project/', include('project.urls')),
     url(r'^member/', include('member.urls')),
     url(r'^admin/', include(admin.site.urls)),
