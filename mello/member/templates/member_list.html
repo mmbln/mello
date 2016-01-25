@@ -29,13 +29,14 @@
   <div class="row">
     <div class="col-lg-2">
     </div>
-    <div class="col-xs-12 col-lg-8 content" id="member_id_{{ member.id }}">
+    <div class="col-xs-12 col-lg-8 content member">
       {% if member.image %}
       <img class="small-portrait" src="{% url 'member_img_small' member.id %}" %}" />
       {% else %}
       <img class="small-portrait" src="{% url 'member_img_small' 0 %}" />
       {% endif %}
       <strong>{{ member.login_name }}</strong> {{ member.full_name }}
+      <a href="{% url 'edit_member' member.id %}" hidden>x</a>
     </div>
     <div class="col-lg-2">
     </div>
@@ -47,12 +48,6 @@
 {% block scripts %}
 <script> 
 $( document ).ready(function() {
-  $('#member_id_*').click(function() {
-    console.log('click');
-  });
-  $('#member_id_*').mouseover(function() {
-    console.log('mouse over');
-  });
 });
 
 

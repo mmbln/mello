@@ -91,9 +91,9 @@ def add_member(request):
     
     return render(request, 'member_new.html', {'form': form})
 
-def edit_member(request):
-    form = MemberForm()
-    return render(request, 'member_new.html')
+def edit_member(request,id):
+    # TODO
+    return render(request, 'member_edit.html', {'id': id})
 
 def show_img(request,id):
     # TODO check if allowed to access the pictures
