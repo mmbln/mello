@@ -35,3 +35,6 @@
     width: 150px;
 }
 
+div.hover-select:hover {
+    background-color: yellow;
+}

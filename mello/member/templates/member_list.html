@@ -29,7 +29,7 @@
   <div class="row">
     <div class="col-lg-2">
     </div>
-    <div class="col-xs-12 col-lg-8 content member">
+    <div class="col-xs-12 col-lg-8 content hover-select">
       {% if member.image %}
       <img class="small-portrait" src="{% url 'member_img_small' member.id %}" %}" />
       {% else %}
@@ -48,9 +48,8 @@
 {% block scripts %}
 <script> 
 $( document ).ready(function() {
+  $("div.hover-select").on("click", alert("hi"));
 });
-
-
 </script>
 {% endblock %}
 
