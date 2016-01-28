@@ -36,7 +36,7 @@
       <img class="small-portrait" src="{% url 'member_img_small' 0 %}" />
       {% endif %}
       <strong>{{ member.login_name }}</strong> {{ member.full_name }}
-      <a href="{% url 'edit_member' member.id %}" hidden>x</a>
+      <a href="{% url 'edit_member' member.id %}">member.id</a>
     </div>
     <div class="col-lg-2">
     </div>
@@ -45,11 +45,4 @@
 </div>
 {%endblock %}
 
-{% block scripts %}
-<script> 
-$( document ).ready(function() {
-  $("div.hover-select").on("click", alert("hi"));
-});
-</script>
-{% endblock %}
 
