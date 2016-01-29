@@ -92,6 +92,19 @@ def add_member(request):
     return render(request, 'member_new.html', {'form': form})
 
 def edit_member(request,id):
+    try:
+        member = Member.objects.get(id=id)
+    except:
+        return HttpResponseRedirect(reverse('member_list'))
+    data = {'login_name': member.login_name,
+            'is_admin': member.is_admin,
+            'email': meber.email,
+            'full_name': member.full_name,
+            'status': member.status,
+            'is_staff': member.is_staff,
+            'image' = member.image,
+    }
+    form = MemberForm(data)
     # TODO
     return render(request, 'member_edit.html', {'id': id})
 

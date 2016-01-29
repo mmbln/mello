@@ -10,7 +10,49 @@
     <div class="col-lg-2">
     </div>
     <div class="col-xs-12 col-lg-8 content gap-after">
-      <h1>Mitglied {{ id }}</h1>
+      <h1>{{ member.login_name }}</h1>
+      <form class="form-horizontal" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<input type="hidden" id="id_admin" name="admin" value="0" />
+	<input type="hidden" id="id_no_image" name="no_image" value="1" />
+	<div class="form-group">
+	  <label for="id_login_name" class="col-xs-2 control-label">Loginname</label>
+	  <div class="col-xs-10">
+	    <input id="id_login_name" name="login_name" class="form-control form-fixer" maxlength="32" type="text" />
+	  </div>
+	  <label for="id_email" class="col-xs-2 control-label">Email</label>
+	  <div class="col-xs-10">
+	    <input id="id_email" name="email" class="form-control form-fixer" max_length="100" type="text" />
+	  </div>
+	  <label for="id_image" class="col-xs-2 control-label">Bild</label>
+	  <div class="col-xs-10">
+	    <img id="id_image" name="image" src="{% static "/member/img/{{ member.id }}" %}" class="form-fixer" />
+	    <div class="right-of-img">
+	      <p><button class="btn btn-default" onclick="changePicture();return false;">Anderes Bild</button></p>
+	      <p><button class="btn btn-default" onclick="setStandardPicture(); return false;">Standard Bild</button></p>
+	      <p><input type="file" id="id_member_img" name="member_img" /></p>
+	    </div>
+	  </div>
+	  <label for="id_full_name" class="col-xs-2 control-label">Name</label>
+	  <div class="col-xs-10">
+	    <input id="id_full_name" name="full_name" class="form-control form-fixer" max_length="64" type="text" />
+	  </div>
+
+	  <label for="id_member_type" class="col-xs-2 control-label">Berechtigung</label>
+	  <div class="col-xs-10">
+	    <select id="id_member_type" class="form-control form-fixer">
+	      <option value="admin">Administrator</option>
+	      <option value="noadmin">Normales Mitglied</option>
+	    </select>
+	  </div>
+	  <div class="col-xs-2">
+	  </div>
+	  <div class="col-xs-8">
+	    <input class="btn btn-primary form-fixer" type="submit" value="Ändern">
+	    <input class="btn btn-default form-fixer" type="button" value="Abbrechen">
+	  </div>
+	</div>
+      </form>
     </div>
     <div class="col-lg-2">
     </div>
@@ -20,4 +62,31 @@
 </div>
 {%endblock %}
 
+{% block scripts %}
+<script src="{% static "js/new_picture.js" %}" ></script>
+
+<script> 
+$( document ).ready(function() {
+  if ($('#id_admin').val() === '1') {
+    $('#id_member_type').val('admin');
+  } else {
+    $('#id_member_type').val('noadmin');
+  };
+
+  $('#id_member_type').change(function() {
+    if ($(this).val() === 'admin') {
+      $('#id_admin').val('1');
+    } else {
+      $('#id_admin').val('0');
+    }
+  });
+
+  $('#id_member_img').change(function(e) {
+    loadFile(e)
+  });
+
+});
+
+</script>
+{% endblock %}
 
