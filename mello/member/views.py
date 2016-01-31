@@ -98,11 +98,11 @@ def edit_member(request,id):
         return HttpResponseRedirect(reverse('member_list'))
     data = {'login_name': member.login_name,
             'is_admin': member.is_admin,
-            'email': meber.email,
+            'email': member.email,
             'full_name': member.full_name,
             'status': member.status,
             'is_staff': member.is_staff,
-            'image' = member.image,
+            'image': member.image,
     }
     form = MemberForm(data)
     # TODO
